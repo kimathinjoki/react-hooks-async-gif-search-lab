@@ -1,10 +1,17 @@
-import React from "react";
+import React, {useState} from "react";
 
-function GifSearch(){
+function GifSearch({handleSearch}){
+
+    const [inputValue, setInputValue]= useState("")
+
+
     return(
         <div>
-            <form>
-                <input type="text"></input>
+            <form onSubmit={(e)=>{
+                e.preventDefault()
+                setInputValue("")
+                handleSearch(inputValue)}}>
+                <input type="text" placeholder="Search Gif" value={inputValue} onChange={(e)=>setInputValue(e.target.value)}></input>
                 <button type="submit">Search</button>
             </form>
         </div>
